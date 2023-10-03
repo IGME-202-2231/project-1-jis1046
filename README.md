@@ -30,8 +30,9 @@ _A brief explanation of your game. Inculde what is the objective for the player.
 
 ## You Additions
 
-_List out what you added to your game to make it different for you_
-
+This spaceship will wrap the screen around.
+Ship will have missiles as powerup.
+Ship also will have ray shield that can destory enemies in contact.
 ## Sources
 
 -   _List all project sources here –models, textures, sound clips, assets, etc._
