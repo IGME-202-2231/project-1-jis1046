@@ -10,8 +10,7 @@ public class SpawnManager : Singleton<SpawnManager>
     [SerializeField]
     SpriteRenderer enemyPrefab;
 
-    [SerializeField]
-    public SpriteInfo spirte;
+    
 
     List<SpriteRenderer> spawnEnemies = new List<SpriteRenderer>();
 
@@ -36,16 +35,17 @@ public class SpawnManager : Singleton<SpawnManager>
     {
         for (int i = 0; i < 2; i++)
         {
-            spawnEnemies.Add(SpawnCreature());
+            //spawnEnemies.Add(SpawnCreature());
+            SpriteRenderer enemy = SpawnCreature();
 
             Vector2 spawnPosition;
 
             spawnPosition.x = 0;
             spawnPosition.y = Random.Range(-5, 5);
 
-            SpawnCreature().transform.position = spawnPosition;
+            enemy.transform.position = spawnPosition;
 
-            spawnEnemies[i].GetComponent<SpriteInfo>();
+            //spawnEnemies[i].GetComponent<SpriteInfo>();
         }
     }
 }

@@ -10,10 +10,23 @@ public class CollisionManager : MonoBehaviour
     [SerializeField]
     SpriteRenderer enemyPrefab;
 
-    List<SpriteRenderer> spawnEnemies = new List<SpriteRenderer>();
+    //List<SpriteInfo> spawnEnemies = new List<SpriteInfo>();
 
     [SerializeField]
     public SpawnManager spawnEnemy;
+
+    public SpriteRenderer enemyRenderer;
+
+    void Awake()
+    {
+        enemyRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    void Start()
+    {
+        spawnEnemy.Spawn();
+
+    }
 
 
     // Update is called once per frame
@@ -33,8 +46,8 @@ public class CollisionManager : MonoBehaviour
             if (isColliding == true)
             {
                 spaceshipCollieded = true;
-                //spawnEnemies.Add(collidable[i]);
-                Destroy(collidable[i].gameObject);
+                collidable.Add(collidable[i]);
+                DestroyImmediate(collidable[i].gameObject,true);
             }
 
             collidable[0].IsColliding = spaceshipCollieded;
