@@ -12,6 +12,10 @@ public class CollisionManager : MonoBehaviour
 
     List<SpriteRenderer> spawnEnemies = new List<SpriteRenderer>();
 
+    [SerializeField]
+    public SpawnManager spawnEnemy;
+
+
     // Update is called once per frame
     void Update()
     {
@@ -22,17 +26,20 @@ public class CollisionManager : MonoBehaviour
 
             bool isColliding = AABBCheck(collidable[0], collidable[i]);
 
+
             collidable[0].IsColliding = isColliding;
             collidable[i].IsColliding = isColliding;
 
             if (isColliding == true)
             {
                 spaceshipCollieded = true;
+                //spawnEnemies.Add(collidable[i]);
                 Destroy(collidable[i].gameObject);
-                Spawn();
             }
 
             collidable[0].IsColliding = spaceshipCollieded;
+
+            
 
         }
     }
@@ -50,7 +57,8 @@ public class CollisionManager : MonoBehaviour
 
         return false;
     }
-
+    
+    /*
     public SpriteRenderer SpawnCreature()
     {
         return Instantiate(enemyPrefab);
@@ -69,5 +77,5 @@ public class CollisionManager : MonoBehaviour
 
             SpawnCreature().transform.position = spawnPosition;
         }
-    }
+    } */
 }

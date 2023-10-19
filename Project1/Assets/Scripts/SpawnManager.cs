@@ -10,6 +10,9 @@ public class SpawnManager : Singleton<SpawnManager>
     [SerializeField]
     SpriteRenderer enemyPrefab;
 
+    [SerializeField]
+    public SpriteInfo spirte;
+
     List<SpriteRenderer> spawnEnemies = new List<SpriteRenderer>();
 
     // Start is called before the first frame update
@@ -41,6 +44,8 @@ public class SpawnManager : Singleton<SpawnManager>
             spawnPosition.y = Random.Range(-5, 5);
 
             SpawnCreature().transform.position = spawnPosition;
+
+            spawnEnemies[i].GetComponent<SpriteInfo>();
         }
     }
 }
