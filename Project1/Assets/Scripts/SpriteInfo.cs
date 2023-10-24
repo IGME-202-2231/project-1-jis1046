@@ -37,7 +37,7 @@ public class SpriteInfo : MonoBehaviour
     {
         if (isColliding)
         {
-            render.color = Color.red;
+            render.color = Color.white;
         }
         else
         {

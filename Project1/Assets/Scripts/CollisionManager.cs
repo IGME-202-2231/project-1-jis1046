@@ -1,21 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CollisionManager : MonoBehaviour
 {
     [SerializeField]
-    List<SpriteInfo> collidable = new List<SpriteInfo>();
+    public List<SpriteInfo> collidable = new List<SpriteInfo>();
 
-    [SerializeField]
-    SpriteRenderer enemyPrefab;
+   /* [SerializeField]
+    SpriteRenderer enemyPrefab;*/
 
     //List<SpriteInfo> spawnEnemies = new List<SpriteInfo>();
 
     [SerializeField]
-    public SpawnManager spawnEnemy;
+   // public SpawnManager spawnEnemy;
 
     public SpriteRenderer enemyRenderer;
+
+    public int playerHealth = 100;
+    public int score = 0;
+
+    public Text healthText;
+    public Text scoreText;
+    public Text gameOverText;
+
+    void UpdateUI()
+    {
+        // Update the UI Text elements with the current health and score
+        healthText.text = "Health: " + playerHealth.ToString();
+        scoreText.text = "Score: " + score.ToString();
+    }
 
     void Awake()
     {
@@ -24,7 +39,8 @@ public class CollisionManager : MonoBehaviour
 
     void Start()
     {
-        spawnEnemy.Spawn();
+        SpawnManager.Instance.Spawn();
+        enemyRenderer = SpawnManager.Instance.spawnedEnemyRenderer;
 
     }
 
@@ -46,17 +62,38 @@ public class CollisionManager : MonoBehaviour
             if (isColliding == true)
             {
                 spaceshipCollieded = true;
-                collidable.Add(collidable[i]);
-                DestroyImmediate(collidable[i].gameObject,true);
+                SpriteInfo spaceSprite = collidable[i];
+                Destroy(collidable[i].gameObject);
+                collidable.RemoveAt(i);
+                playerHealth--;
+                score += 5;
+
+                if(playerHealth <= 0)
+                {
+                    
+                }
+                
+               // collidable.Add(enemyRenderer.GetComponent<SpriteInfo>());
+                //collidable[i] = Instantiate(enemyRenderer.GetComponent<SpriteInfo>());
+
+                //Destroy(collidable[i].gameObject);
             }
 
             collidable[0].IsColliding = spaceshipCollieded;
-
-            
-
+         
         }
+
+        UpdateUI();
+        gameOver();
     }
 
+    void gameOver()
+    {
+      if (collidable.Count < 1) 
+        {
+            scoreText.text = "Game Over";
+        }   
+    }
     bool AABBCheck(SpriteInfo spriteA, SpriteInfo spriteB)
     {
         // Check for collision

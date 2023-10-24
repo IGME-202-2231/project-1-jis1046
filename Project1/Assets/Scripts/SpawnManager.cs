@@ -10,9 +10,13 @@ public class SpawnManager : Singleton<SpawnManager>
     [SerializeField]
     SpriteRenderer enemyPrefab;
 
-    
+    //Hold and carry the enemy sprite reference
+    public SpriteRenderer spawnedEnemyRenderer;
 
     List<SpriteRenderer> spawnEnemies = new List<SpriteRenderer>();
+
+    [SerializeField]
+    CollisionManager collisionManager;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +37,7 @@ public class SpawnManager : Singleton<SpawnManager>
 
     public void Spawn()
     {
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 5; i++)
         {
             //spawnEnemies.Add(SpawnCreature());
             SpriteRenderer enemy = SpawnCreature();
@@ -45,7 +49,10 @@ public class SpawnManager : Singleton<SpawnManager>
 
             enemy.transform.position = spawnPosition;
 
-            //spawnEnemies[i].GetComponent<SpriteInfo>();
+            collisionManager.collidable.Add(enemy.GetComponent<SpriteInfo>());
+            spawnEnemies.Add(enemy);
+
+            spawnedEnemyRenderer = enemy;
         }
     }
 }
