@@ -9,11 +9,11 @@
 
 ## Game Design
 
--   Camera Orientation: _How are the art assets viewed from? (ie. topdown or side)_
--   Camera Movement: _How does the camera move in your game? (if at all)_
--   Player Health: _How are you handling player health? (healthbar, lives, ?)_
--   End Condition: _How does a game/round/level end?_
--   Scoring: _How does the player earn points in your game?_
+-   Camera Orientation: Side
+-   Camera Movement: Arrow keyboard
+-   Player Health: Number countdown from 100
+-   End Condition: When all enemies are destory
+-   Scoring: When enemy destory, 5 points add
 
 ### Game Description
 
@@ -22,27 +22,28 @@ _A brief explanation of your game. Inculde what is the objective for the player.
 ### Controls
 
 -   Movement
-    -   Up: 
-    -   Down: 
-    -   Left: 
-    -   Right: 
--   Fire: 
+    -   Up: Up arrow
+    -   Down: Down arrow
+    -   Left: Left arrow
+    -   Right: Right arrow
+-   Fire: Left click
 
 ## You Additions
 
 This spaceship will wrap the screen around.
-Ship will have missiles as powerup.
-Ship also will have ray shield that can destory enemies in contact.
-## Sources
 
--   _List all project sources here –models, textures, sound clips, assets, etc._
--   _If an asset is from the Unity store, include a link to the page and the author’s name_
+## Sources
+Play spaceship - unkown
+Armour enemyship - pngtree
+enmeyship - pngtree
+fire laser- unkonwn
 
 ## Known Issues
 
 _List any errors, lack of error checking, or specific information that I need to know to run your program_
+Enemy could not resawn then collision occur, it has error, so I comment it out
 
 ### Requirements not completed
 
-_If you did not complete a project requirement, notate that here_
+Firing collison with enemies
 
