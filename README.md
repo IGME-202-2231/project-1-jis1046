@@ -17,7 +17,7 @@
 
 ### Game Description
 
-_A brief explanation of your game. Inculde what is the objective for the player. Think about what would go on the back of a game box._
+The main objective is to destory all enemies.
 
 ### Controls
 
